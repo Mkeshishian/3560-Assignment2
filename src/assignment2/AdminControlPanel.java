@@ -14,7 +14,9 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.GridBagLayout;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 
 
@@ -74,8 +76,32 @@ public class AdminControlPanel extends ControlPanel {
         UIManager.put("Button.defaultButtonFollowsFocus", Boolean.TRUE);
         InputMap im = (InputMap) UIManager.get("Button.focusInputMap");
         im.put(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0), "none");
-    }
+// adding validation
+        Component validateButton = null;
+		add(validateButton);
 
+    }
+    // Create a method that finds the user who made the last update
+
+    public User findLastUpdatedUser(List<User> users) {
+        User lastUpdatedUser = null;
+        long lastUpdateTime = 0;
+        for (User user : users) {
+            if (user.getLastUpdateTime() > lastUpdateTime) {
+                lastUpdatedUser = user;
+                lastUpdateTime = user.getLastUpdateTime();
+            }
+        }
+		return lastUpdatedUser;
+    }
+    {
+ // Create a new UserView object
+    UserViewPanel view = new UserViewPanel(allUsers, null, root);
+
+    User User = null;
+	// Show the creation time of the User object in the UserView
+    view.showCreationTime(User);
+}
     private void formatFrame() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());

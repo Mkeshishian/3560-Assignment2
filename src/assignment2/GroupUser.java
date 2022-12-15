@@ -10,7 +10,8 @@ import assignment2.Visitor;
 public class GroupUser extends User {
 
     private Map<String,User> groupUsers;
-
+    // Add a creationTime attribute of type long
+    private long creationTime;
     public GroupUser(String id) {
         super(id);
         groupUsers = new HashMap<String,User>();
@@ -95,7 +96,10 @@ public class GroupUser extends User {
     }
 
 // Private methods
-    
+ // Add a constructor that sets the creationTime attribute to the current system timestamp
+    public GroupUser() {
+        this.creationTime = System.currentTimeMillis();
+    }
     private boolean containsGroupUser() {
         boolean containsGroup = false;
         for (User user : this.groupUsers.values()) {
@@ -106,4 +110,10 @@ public class GroupUser extends User {
         return containsGroup;
     }
 
+	@Override
+	protected long getCreationTime() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+    
 }

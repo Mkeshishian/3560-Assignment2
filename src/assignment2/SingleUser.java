@@ -154,4 +154,11 @@ public class SingleUser extends User implements Subject {
         return positive;
     }
 
+
+	@Override
+	protected long getCreationTime() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

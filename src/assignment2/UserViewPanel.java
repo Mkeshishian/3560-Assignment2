@@ -60,6 +60,10 @@ public class UserViewPanel extends ControlPanel {
         initializeComponents();
         addComponents();
     }
+ // Add a method that displays the creationTime attribute of a User object
+    public void showCreationTime(User user) {
+        long creationTime = user.getCreationTime();
+    }
     
     private void addComponents() {
         addComponent(frame, toFollowTextField, 0, 0, 1, 1, GridBagConstraints.CENTER, GridBagConstraints.BOTH);
